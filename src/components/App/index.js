@@ -2,7 +2,8 @@ import React from 'react';
 
 import { AppHeader } from '../AppHeader';
 import { SearchPanel } from '../SearchPanel';
-import { ItemStatusFilter } from '../ItemStatusFilter';
+// import { ItemStatusFilter } from '../ItemStatusFilter';
+import { ItemStatusFilterClass } from '../ItemStatusFilterClass';
 import { TodoList } from '../TodoList';
 
 import './style.css';
@@ -19,9 +20,13 @@ export const App = () => {
             <AppHeader toDo={1} done={3} />
             <div className="top-panel">
                 <SearchPanel />
-                <ItemStatusFilter />
+                {/* <ItemStatusFilter /> */}
+                <ItemStatusFilterClass />
             </div>
-            <TodoList todos={todoDate} />
+            <TodoList
+                todos={todoDate}
+                onDeleted={id => console.log('del', id)}
+            />
         </div>
     );
 };
