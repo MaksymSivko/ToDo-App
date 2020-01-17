@@ -7,8 +7,10 @@ import { ItemStatusFilterClass } from '../ItemStatusFilterClass';
 import { TodoList } from '../../Fun/TodoList';
 
 import './style.css';
+import ItemAddForm from '../ItemAddForm';
 
 export class AppClass extends Component {
+    maxId = 100;
     state = {
         todoDate: [
             { label: 'Drink Coffee', important: false, id: 1 },
@@ -31,6 +33,22 @@ export class AppClass extends Component {
         });
     };
 
+    addItem = text => {
+        const newItem = {
+            label: text,
+            important: false,
+            id: this.maxId++
+        };
+
+        this.setState(({ todoDate }) => {
+            const newArr = [...todoDate, newItem];
+
+            return {
+                todoDate: newArr
+            };
+        });
+    };
+
     render() {
         return (
             <div className="todo-app">
@@ -44,6 +62,8 @@ export class AppClass extends Component {
                     todos={this.state.todoDate}
                     onDeleted={this.deletedItem}
                 />
+
+                <ItemAddForm onAddItem={this.addItem} />
             </div>
         );
     }
