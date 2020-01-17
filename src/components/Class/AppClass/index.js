@@ -13,11 +13,20 @@ export class AppClass extends Component {
     maxId = 100;
     state = {
         todoDate: [
-            { label: 'Drink Coffee', important: false, id: 1 },
-            { label: 'Learn React', important: true, id: 2 },
-            { label: 'Build Awesome App', important: false, id: 3 }
+            this.createTodoItem('Drink Coffee'),
+            this.createTodoItem('Learn React'),
+            this.createTodoItem('Build Awesome App')
         ]
     };
+
+    createTodoItem(label) {
+        return {
+            label,
+            important: false,
+            done: false,
+            id: this.maxId++
+        };
+    }
 
     deletedItem = id => {
         this.setState(({ todoDate }) => {
@@ -34,19 +43,21 @@ export class AppClass extends Component {
     };
 
     addItem = text => {
-        const newItem = {
-            label: text,
-            important: false,
-            id: this.maxId++
-        };
-
         this.setState(({ todoDate }) => {
-            const newArr = [...todoDate, newItem];
+            const newArr = [...todoDate, this.createTodoItem(text)];
 
             return {
                 todoDate: newArr
             };
         });
+    };
+
+    onToggleImportant = id => {
+        console.log('Important', id);
+    };
+
+    onToggleDone = id => {
+        console.log('Done', id);
     };
 
     render() {
@@ -55,12 +66,13 @@ export class AppClass extends Component {
                 <AppHeader toDo={1} done={3} />
                 <div className="top-panel">
                     <SearchPanel />
-                    {/* <ItemStatusFilter /> */}
                     <ItemStatusFilterClass />
                 </div>
                 <TodoList
                     todos={this.state.todoDate}
                     onDeleted={this.deletedItem}
+                    onToggleDone={this.onToggleDone}
+                    onToggleImportant={this.onToggleImportant}
                 />
 
                 <ItemAddForm onAddItem={this.addItem} />
