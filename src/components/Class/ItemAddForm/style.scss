@@ -1,3 +1,13 @@
 .item-add-form {
 	margin-top: 10px;
+	display: flex;
+	align-items: center;
+
+	button {
+		width: 150px;
+	}
+
+	input {
+		margin-right: 3px;
+	}
 }
