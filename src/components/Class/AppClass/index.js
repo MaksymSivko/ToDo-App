@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import { AppHeader } from '../AppHeader';
-import { SearchPanel } from '../SearchPanel';
+import { AppHeader } from '../../Fun/AppHeader';
+import { SearchPanel } from '../../Fun/SearchPanel';
 // import { ItemStatusFilter } from '../ItemStatusFilter';
 import { ItemStatusFilterClass } from '../ItemStatusFilterClass';
-import { TodoList } from '../TodoList';
+import { TodoList } from '../../Fun/TodoList';
 
 import './style.css';
 

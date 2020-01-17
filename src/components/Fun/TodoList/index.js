@@ -1,6 +1,6 @@
 import React from 'react';
 // import { TodoListItem } from '../TodoListItem';
-import { TodoListItemClass } from '../TodoListItemClass';
+import { TodoListItemClass } from '../../Class/TodoListItemClass';
 
 import './style.css';
 
